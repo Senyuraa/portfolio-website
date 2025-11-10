@@ -3,12 +3,11 @@ body{
   font-family:"Inter",system-ui,sans-serif;
   background:#050505;
   color:#f3f3f3;
-  overflow:hidden;
-  position:relative;
+  overflow-x:hidden;
   min-height:100vh;
 }
 
-/* grid */
+/* subtle grid background */
 body::before{
   content:"";
   position:fixed;
@@ -18,9 +17,10 @@ body::before{
     linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:40px 40px;
   z-index:0;
+  pointer-events:none;
 }
 
-/* socials */
+/* socials top-left */
 .socials{
   position:fixed;
   top:85px;
@@ -29,20 +29,25 @@ body::before{
   gap:20px;
   z-index:3;
 }
-.icon svg{
-  width:28px;
-  height:28px;
-  fill:#fff;
-  transition:transform .25s ease;
+.icon img {
+  width: 26px;          /* Adjust to taste (24–30 works well) */
+  height: auto;
+  opacity: 0.9;
+  filter: brightness(100%) contrast(100%);
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
-.icon:hover svg{transform:scale(1.12);}
 
-/* center */
+.icon:hover img {
+  transform: scale(1.12);
+  opacity: 1;
+}
+
+
+
+/* center profile */
 .center{
-  position:absolute;
-  top:42%;
-  left:50%;
-  transform:translate(-50%,-50%);
+  position:relative;
+  top:160px;
   text-align:center;
   z-index:1;
 }
@@ -55,42 +60,99 @@ body::before{
   box-shadow:0 0 30px rgba(255,255,255,.05);
 }
 .name{
-  margin-top:20px;
-  font-size:28px;
+  margin-top:25px;
+  font-size:30px;
   font-weight:600;
+  letter-spacing:0.5px;
 }
 .tagline{
-  margin-top:10px;
+  margin-top:18px; /* increased breathing space */
   font-size:15px;
   color:#a0a0a0;
   max-width:420px;
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
 }
-.under-text{margin-top:50px;}
-.social-text{
-  font-size:20px;
-  color:#9e9e9e;
-  opacity:0;
-  animation:fadeIn 1s ease forwards .6s;
-}
-@keyframes fadeIn{to{opacity:1;}}
 
-/* arrow svg */
-.guide-svg{
-  position:fixed;
-  left:0;top:0;
-  width:100vw;height:100vh;
+/* experience section */
+.experience{
+  margin:220px auto;
+  max-width:700px;
+  text-align:center;
   z-index:2;
-  pointer-events:none;
 }
-.guide-path{
-  fill:none;
-  stroke:#fff;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  opacity:.9;
+.exp-line{
+  width:0%;
+  height:2px;
+  background:#ffffff;
+  margin:0 auto 18px auto; /* moved up slightly */
+  border-radius:3px;
+  transition:width .25s linear;
 }
-.guide-head{
-  fill:#fff;
+.experience h2{
+  font-size:34px;
+  margin-bottom:35px;
+  letter-spacing:1px;
+  color:#f5f5f5;
+}
+.exp-item{
+  background:rgba(255,255,255,0.15);
+  border-radius:15px;
+  padding:30px;
+  margin:0 auto;
+  max-width:3000px;
+  box-shadow:0 0 20px rgba(255,255,255,0.03);
+}
+.exp-item h3{
+  font-size:24px;
+  color:#fff;
+  margin-bottom:8px;
+}
+.role{
+  color:#a0a0a0;
+  font-size:18px;
+  margin-bottom:15px;
+}
+.desc{
+  color:#c2c2c2;
+  line-height:1.6;
+  margin-bottom:15px;
+  font-size:16px;
+}
+.langs{
+  font-size:16px;
+  color:#9e9e9e;
+}
+.lang{
+  cursor:pointer;
+  position:relative;
+  transition:color .2s ease;
+}
+.lang:hover{
+  color:#d2e5e8;
+}
+.lang:hover::after{
+  position:absolute;
+  bottom:100%;
+  left:0;
+  font-size:12px;
+  color:#aaaaaa;
+}
+
+/* upwork logo */
+.upwork-logo{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+}
+.upwork-logo img{
+  width:120px;
+  height:auto;
+  border-radius:10px;
+  opacity:0.9;
+  transition:transform .3s ease, opacity .3s ease;
+}
+.upwork-logo img:hover{
+  transform:scale(1.05);
+  opacity:1;
 }
