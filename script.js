@@ -1,18 +1,22 @@
-// Animate white line above Experience based on scroll position
 const expSection = document.getElementById("experience");
 const expLine = document.getElementById("exp-line");
 
+// super smooth experience line animation
+let lastWidth = 0;
+
 window.addEventListener("scroll", () => {
   const rect = expSection.getBoundingClientRect();
-  const viewHeight = window.innerHeight;
+  const windowHeight = window.innerHeight;
 
-  if (rect.top < viewHeight && rect.bottom > 0) {
-    const visibleRatio = 1 - rect.top / viewHeight;
-    const clamped = Math.max(0, Math.min(visibleRatio, 1));
-    expLine.style.width = (clamped * 45) + "%";
-  } else if (rect.top >= viewHeight) {
+  if (rect.top < windowHeight && rect.bottom > 0) {
+    const progress = Math.min(1, Math.max(0, 1 - rect.top / windowHeight));
+    const targetWidth = progress * 100;
+    lastWidth += (targetWidth - lastWidth) * 0.1; // smooth interpolation
+    expLine.style.width = lastWidth.toFixed(2) + "%";
+    requestAnimationFrame(() => {}); // GPU smoothness
+  } else if (rect.top >= windowHeight) {
     expLine.style.width = "0%";
   } else if (rect.bottom <= 0) {
-    expLine.style.width = "45%";
+    expLine.style.width = "100%";
   }
 });

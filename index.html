@@ -7,74 +7,101 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- ===== SOCIAL ICONS ===== -->
+  <!-- ===== SOCIAL ICONS (TOP RIGHT, FIXED) ===== -->
   <div class="socials">
-  <div class="socials">
-  <a href="#" class="icon" title="GitHub">
-    <img src="github.png" alt="GitHub Logo">
-  </a>
-  <a href="#" class="icon" title="LinkedIn">
-    <img src="linkedin.png" alt="LinkedIn Logo">
-  </a>
-  <a href="#" class="icon" title="Instagram">
-    <img src="instagram.png" alt="Instagram Logo">
-  </a>
-</div>
-<div class="socials">
-  <!-- GitHub -->
-  <a href="https://github.com/Senyuraa" target="_blank" class="icon" title="GitHub">
-    <img src="github.png" alt="GitHub Logo">
-  </a>
-
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/frfraymaaan/" target="_blank" class="icon" title="LinkedIn">
-    <img src="linkedin.png" alt="LinkedIn Logo">
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/frfraymaan/" target="_blank" class="icon" title="Instagram">
-    <img src="instagram.png" alt="Instagram Logo">
-  </a>
-</div>
-
-</a>
-
+    <a href="https://github.com/Senyuraa" target="_blank" class="icon" title="GitHub">
+      <img src="github.png" alt="GitHub Logo">
+      <span class="icon-label">GitHub</span>
+    </a>
+    <a href="https://www.linkedin.com/in/frfraymaaan/" target="_blank" class="icon" title="LinkedIn">
+      <img src="linkedin.png" alt="LinkedIn Logo">
+      <span class="icon-label">LinkedIn</span>
+    </a>
+    <a href="https://www.instagram.com/frfraymaan/" target="_blank" class="icon" title="Instagram">
+      <img src="instagram.png" alt="Instagram Logo">
+      <span class="icon-label">Instagram</span>
     </a>
   </div>
 
-  <!-- ===== CENTER PROFILE ===== -->
-  <div class="center">
-    <img src="profile.jpeg" alt="Aymaan Haider Saiyad" class="avatar" />
-    <h1 class="name">Aymaan Haider Saiyad</h1>
-    <p class="tagline">I'm a 17 year old Grade-XII student trying to master frontend development.</p>
-  </div>
+  <!-- ===== INTRO SECTION ===== -->
+  <section class="intro">
+    <div class="intro-content">
+      <div class="avatar-wrapper">
+        <img src="profile.jpeg" alt="Aymaan Haider Saiyad" class="avatar" />
+      </div>
+      <div class="intro-text">
+        <h1 class="name">Aymaan Haider Saiyad</h1>
+        <p class="tagline">
+          I'm a 17-year-old Grade-XII student passionate about frontend development.
+          I love creating minimal, smooth, and interactive web experiences.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== EXPERIENCE SECTION ===== -->
   <section class="experience" id="experience">
     <div class="exp-line" id="exp-line"></div>
     <h2>Experience</h2>
-    <div class="exp-item">
-      <h3>Upwork</h3>
-      <p class="role">Freelance Web Developer</p>
-      <p class="desc">
-        Worked with clients to create a minimal website for their startup using HTML, CSS and JavaScript. 
-        The website included responsive design and interactive elements to enhance user experience. 
-        Successfully delivered the projects on time and received positive feedback from the client. 
-        Developed skills in communication, project management, and problem-solving through this experience.
-        Using those experiences, I am mastering frontend development and looking forward to working on more complex projects in the future.
-        
-      </p>
-      <div class="langs">
-        Languages used:
-        <span class="lang">HTML</span>,
-        <span class="lang">CSS</span>,
-        <span class="lang">JavaScript</span>
+
+    <!-- ===== UPWORK EXPERIENCE ===== -->
+    <div class="exp-layout">
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>Freelance Web Developer <span>@ Upwork</span></h3>
+          <p class="date">June 2023 — Sept 2024</p>
+        </div>
+        <p class="desc">
+          Collaborated with startups to create responsive and aesthetic websites using
+          <b>HTML, CSS, and JavaScript</b>. Focused on clean UI, performance, and modern design principles.
+        </p>
+        <ul class="exp-points">
+          <li>Developed responsive layouts optimized for all devices.</li>
+          <li>Built custom animations and smooth UI transitions.</li>
+          <li>Managed client communication and revisions efficiently.</li>
+        </ul>
+        <div class="langs">
+          Tools: <span class="lang">HTML</span> • <span class="lang">CSS</span> • <span class="lang">JavaScript</span>
+        </div>
       </div>
-      <div class="upwork-logo">
-        <img src="upwork.jpg" alt="Upwork Logo" />
+
+      <div class="exp-logo-box">
+        <img src="upwork.jpg" alt="Upwork Logo">
+      </div>
+    </div>
+
+    <!-- ===== NEW EXPERIENCE: SCL CONTRACTS ===== -->
+    <div class="exp-layout">
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>Frontend Developer <span>@ SCL Contracts</span></h3>
+          <p class="date">2024 — Ongoing</p>
+        </div>
+        <p class="desc">
+          Currently designing and developing the official website for SCL Contracts. 
+          The project is in the design and discussion phase and will soon go live.
+          Focusing on creating a professional, modern UI and optimized user experience.
+        </p>
+        <ul class="exp-points">
+          <li>Designed wireframes and responsive UI layouts.</li>
+          <li>Developing the website using modern frontend tools and libraries.</li>
+          <li>Collaborating closely with the client for feedback and deployment.</li>
+        </ul>
+        <div class="langs">
+          Tools: <span class="lang">HTML</span> • <span class="lang">CSS</span> • <span class="lang">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="exp-logo-box">
+        <img src="sclcontracts.jpg" alt="SCL Contracts Logo">
       </div>
     </div>
   </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Built with <span class="apple"></span> by Aymaan</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
