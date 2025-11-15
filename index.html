@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aymaan Haider Saiyad</title>
+  <title>Aymaan's Portfolio Website</title>
   <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <!-- ===== SOCIAL ICONS (TOP RIGHT, FIXED) ===== -->
-  <div class="socials">
+ <!-- ===== SOCIAL ICONS (TOP RIGHT, FIXED) ===== -->
+<div class="socials show-nav" id="socials">
     <a href="https://github.com/Senyuraa" target="_blank" class="icon" title="GitHub">
       <img src="github.png" alt="GitHub Logo">
       <span class="icon-label">GitHub</span>
@@ -21,23 +22,29 @@
       <img src="instagram.png" alt="Instagram Logo">
       <span class="icon-label">Instagram</span>
     </a>
-  </div>
+</div>
+
 
   <!-- ===== INTRO SECTION ===== -->
-  <section class="intro">
-    <div class="intro-content">
-      <div class="avatar-wrapper">
-        <img src="profile.jpeg" alt="Aymaan Haider Saiyad" class="avatar" />
-      </div>
-      <div class="intro-text">
-        <h1 class="name">Aymaan Haider Saiyad</h1>
-        <p class="tagline">
-          I'm a 17-year-old Grade-XII student passionate about frontend development.
-          I love creating minimal, smooth, and interactive web experiences.
-        </p>
-      </div>
+ <section class="intro">
+  <div class="intro-content">
+    
+    <div class="avatar-wrapper">
+      <img src="profile.jpeg" alt="Aymaan Haider Saiyad" class="avatar" />
     </div>
-  </section>
+
+    <div class="intro-text">
+      <a href="about.html" class="name">Aymaan Haider Saiyad</a>
+
+      <p class="tagline">
+      I'm a 17-year-old Grade-XII student passionate about frontend development. I love creating minimal, smooth, and interactive web experiences.
+      </p>
+
+      <div class="intro-line"></div>
+    </div>
+
+  </div>
+</section>
 
   <!-- ===== EXPERIENCE SECTION ===== -->
   <section class="experience" id="experience">
@@ -48,7 +55,7 @@
     <div class="exp-layout">
       <div class="exp-item">
         <div class="exp-header">
-          <h3>Freelance Web Developer <span>@ Upwork</span></h3>
+          <h3>Freelance Web Developer<span>@ Upwork</span></h3>
           <p class="date">June 2023 — Sept 2024</p>
         </div>
         <p class="desc">
@@ -75,12 +82,12 @@
       <div class="exp-item">
         <div class="exp-header">
           <h3>Frontend Developer <span>@ SCL Contracts</span></h3>
-          <p class="date">2024 — Ongoing</p>
+          <p class="date">Nov 2024 — Jan 2025</p>
         </div>
         <p class="desc">
-          Currently designing and developing the official website for SCL Contracts. 
-          The project is in the design and discussion phase and will soon go live.
+          Designed and developed a website for SCL Contracts. 
           Focusing on creating a professional, modern UI and optimized user experience.
+          Tho the website was'nt approved yet I learned a lot.
         </p>
         <ul class="exp-points">
           <li>Designed wireframes and responsive UI layouts.</li>
@@ -98,11 +105,34 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <p>Built with <span class="apple"></span> by Aymaan</p>
-  </footer>
+<!-- ===== CLEAN MINIMAL FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-line"></div>
 
+  <div class="footer-flex">
+
+    <div class="footer-left">
+      ® 2025 Aymaan Haider Saiyad
+    </div>
+
+    <div class="footer-right footer-list">
+      <a href="mailto:aymaan.work@icloud.com">aymaan.work@icloud.com</a>
+      <a href="https://github.com/Senyuraa" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/frfraymaaan/" target="_blank">LinkedIn</a>
+      <a href="https://www.instagram.com/frfraymaan/" target="_blank">Instagram</a>
+    </div>
+
+  </div>
+</footer>
   <script src="script.js"></script>
+  
 </body>
+<!-- ===== TRANSPARENT MINIMAL NAVBAR ===== -->
+<header class="navbar" id="navbar">
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="certifications.html">Certifications</a>
+  </nav>
+</header>
 </html>

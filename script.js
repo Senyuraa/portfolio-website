@@ -20,3 +20,32 @@ window.addEventListener("scroll", () => {
     expLine.style.width = "100%";
   }
 });
+
+// ===== SCROLL HIDE/SHOW NAV + SOCIALS =====
+let lastScroll = 0;
+
+const navbar = document.getElementById("navbar");
+const socials = document.getElementById("socials");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 50) {
+    // DOWN → hide
+    navbar.classList.add("hide-nav");
+    socials.classList.add("hide-nav");
+
+    navbar.classList.remove("show-nav");
+    socials.classList.remove("show-nav");
+  } 
+  else {
+    // UP → show
+    navbar.classList.add("show-nav");
+    socials.classList.add("show-nav");
+
+    navbar.classList.remove("hide-nav");
+    socials.classList.remove("hide-nav");
+  }
+
+  lastScroll = currentScroll;
+});

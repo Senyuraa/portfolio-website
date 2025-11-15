@@ -1,7 +1,22 @@
+/* ---------------------------------------------------
+   GLOBAL RESET + BASE
+--------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.footer {
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 50px;
+  font-size: 14px;
+  color: #a0a0a0;
+  font-family: "SF Pro Display", "Inter", sans-serif;
+  letter-spacing: 0.5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 body {
@@ -26,7 +41,10 @@ body::before {
   pointer-events: none;
 }
 
-/* ===== INTRO SECTION ===== */
+/* ---------------------------------------------------
+   HOME PAGE — INTRO
+--------------------------------------------------- */
+
 .intro {
   position: relative;
   top: 22vh;
@@ -39,6 +57,56 @@ body::before {
   align-items: center;
   gap: 40px;
 }
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.avatar {
+  width: 280px;
+  height: 280px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,.15);
+  opacity: 0.95;
+  transition: .3s ease;
+}
+
+.avatar:hover { transform: scale(1.05); opacity: 1; }
+
+.name {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: white;
+  text-decoration: none;
+  transition: .25s ease;
+}
+
+.name:hover { color: #c2c2c2; }
+
+.tagline {
+  font-size: 17px;
+  color: #a0a0a0;
+  line-height: 1.6;
+}
+
+/* EXACT FIX YOU ASKED FOR */
+.intro {
+  position: relative;
+  top: 22vh;
+  left: 100px;
+  z-index: 2;
+}
+
+.intro-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
 
 .avatar-wrapper {
   position: relative;
@@ -81,24 +149,30 @@ body::before {
   line-height: 1.6;
 }
 
-/* ===== SOCIAL ICONS (TOP RIGHT) ===== */
+/* ---------------------------------------------------
+   SOCIAL ICONS
+--------------------------------------------------- */
 .socials {
   position: fixed;
   top: 40px;
   right: 60px;
   display: flex;
   gap: 25px;
-  z-index: 10;
+  z-index: 1200;
 }
 
 .icon {
-  position: relative;
+  position: relative;   /* ⭐ THIS fixes label position issue */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .icon img {
   width: 26px;
   opacity: 0.85;
   transition: transform 0.25s ease, opacity 0.25s ease;
+  pointer-events: auto;
 }
 
 .icon:hover img {
@@ -106,27 +180,32 @@ body::before {
   opacity: 1;
 }
 
+/* ===== LABEL FIXED UNDER EACH ICON ===== */
 .icon-label {
   position: absolute;
-  top: 35px;
+  top: 38px;            /* ⭐ label goes BELOW icon (increase for more gap) */
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
+  transform: translateX(-50%);
   opacity: 0;
-  color: #f0f0f0;
-  background: rgba(255,255,255,0.08);
-  padding: 4px 10px;
+  background: rgba(255,255,255,0.10);
+  padding: 5px 10px;    /* ⭐ breathing space */
   border-radius: 6px;
   font-size: 12px;
-  transition: all 0.3s ease;
+  color: #f0f0f0;
   white-space: nowrap;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .icon:hover .icon-label {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(4px);  /* ⭐ smooth pop-down */
 }
 
-/* ===== EXPERIENCE SECTION ===== */
+
+/* ---------------------------------------------------
+   EXPERIENCE SECTION
+--------------------------------------------------- */
+
 .experience {
   margin-top: 220px;
   padding-left: 100px;
@@ -242,18 +321,562 @@ body::before {
   opacity: 1;
 }
 
-/* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  margin-top: 150px;
-  margin-bottom: 50px;
-  font-size: 14px;
-  color: #a0a0a0;
-  font-family: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  letter-spacing: 0.5px;
+/* ---------------------------------------------------
+   ABOUT PAGE
+--------------------------------------------------- */
+
+.about-section {
+  padding-top: 22vh;
+  padding-left: 100px;
+  padding-right: 100px;
+  animation: fadeIn .7s forwards;
+  opacity: 0;
 }
 
-.footer .apple {
-  color: #f5f5f5;
+.about-layout {
+  display: flex;
+  align-items: center;    /* ⭐ fixes vertical placement */
+  justify-content: space-between;
+  gap: 60px;
+  animation: fadeIn .7s forwards;
+  opacity: 0;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.about-text-box { max-width: 650px; }
+
+.about-title { font-size: 42px; margin-bottom: 20px; }
+
+.about-text {
+  margin-bottom: 18px;
+  line-height: 1.6;
+  color: #c7c7c7;
+}
+
+.about-image {
+  width: 340px;            /* ⭐ bigger than before */
+  height: 340px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,.15);
+}
+
+.about-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -40px;     /* ⭐ brings image slightly left */
+}
+
+/* ABOUT LINK */
+.about-cert-link a {
+  color: #70e1c9;
+  text-decoration: none;
+  font-size: 18px;
+}
+.about-cert-link a:hover { color: white; }
+
+/* ---------------------------------------------------
+   CERTIFICATIONS PAGE
+--------------------------------------------------- */
+
+.cert-section {
+  padding-top: 22vh;
+  padding-left: 100px;
+  padding-right: 100px;
+  animation: fadeIn .7s forwards;
+  opacity: 0;
+}
+
+.cert-title { font-size: 42px; margin-bottom: 10px; }
+
+.cert-desc { color:#c7c7c7; margin-bottom: 40px; }
+
+.cert-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  background: rgba(255,255,255,.08);
+  padding: 30px;
+  border-radius: 14px;
+  margin-bottom: 50px;
+  transition: .3s ease;
+}
+
+.cert-card:hover { transform: translateY(-4px); }
+
+.cert-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cert-left h2 { font-size: 26px; }
+
+.cert-left p {
   font-size: 16px;
+  line-height: 1.6;
+  color: #c7c7c7;
+}
+
+.cert-logo-final {
+  width: 140px;
+  margin-top: 12px;
+  opacity: .95;
+  object-fit: contain;
+}
+
+.cert-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cert-img {
+  width: 330px;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,.1);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.cert-img:hover { transform: scale(1.03); }
+
+.cert-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  z-index: 999;
+}
+
+.cert-viewer.active { opacity:1; pointer-events:auto; }
+
+.cert-viewer img {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 14px;
+  animation: zoomIn .25s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(.8); opacity:0; }
+  to { transform: scale(1); opacity:1; }
+}
+
+/* ---------------------------------------------------
+   BACK BUTTON
+--------------------------------------------------- */
+
+.back-btn {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  opacity: .85;
+  transition: .2s;
+  z-index: 2003; /* ⭐ above navbar + socials + everything */
+}
+
+.back-btn:hover {
+  opacity: 1;
+}
+  
+
+/* ---------------------------------------------------
+   MOBILE RESPONSIVE
+--------------------------------------------------- */
+
+@media (max-width:768px){
+
+  .intro { top:10vh; left:0; padding:0 20px; }
+
+  .intro-content { flex-direction:column; text-align:center; }
+
+  .experience { padding-left:20px; padding-right:20px; }
+
+  .exp-layout { flex-direction:column; }
+
+  .about-layout { flex-direction:column; text-align:center; }
+
+  .cert-card { flex-direction:column; align-items:center; text-align:center; }
+
+  .cert-img { width:260px; }
+
+  .cert-logo-final { width:110px; }
+}
+
+/* ---------------------------------------------------
+   CLEAN TRANSPARENT NAVBAR
+--------------------------------------------------- */
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 44px;      /* ↓ BRING NAVBAR DOWN */
+  left: 0;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  z-index: 1000;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 45px;
+}
+
+.nav-links a {
+  color: #e8e8e8;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  opacity: 0.85;
+  transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* CENTERED MINIMAL FOOTER */
+.site-footer-centered {
+  width: 100%;
+  text-align: center;
+  margin-top: 120px;
+  padding-bottom: 40px;
+  font-size: 14px;
+  color: #a0a0a0;
+  letter-spacing: 0.4px;
+  opacity: 0.85;
+  font-family: "Inter", sans-serif;
+}
+/* ---------------------------------------------------
+   CLEAN MINIMAL FOOTER (GLOBAL)
+--------------------------------------------------- */
+/* ===== TRUE PROFESSIONAL FOOTER ===== */
+
+.site-footer {
+  width: 100%;
+  margin-top: 120px;
+  padding: 25px 0 40px 0;
+  color: #a0a0a0;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+}
+
+.footer-line {
+  width: 92%;               /* shorter clean line */
+  margin: 0 auto 22px auto;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.325);
+  border-radius: 5px;
+}
+
+.footer-flex {
+  width: 92%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  opacity: 0.85;
+  letter-spacing: 0.4px;
+}
+
+/* EMAIL ON TOP */
+.footer-email {
+  display: block;
+  margin-bottom: 10px;
+  color: #a0a0a0b4;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.footer-email:hover {
+  color: white;
+}
+
+/* SOCIAL LINKS BELOW */
+.footer-social-row {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-social-row a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.footer-social-row a:hover {
+  color: white;
+}
+.footer-list {
+  display: flex;
+  flex-direction: row;   /* ⭐ vertical list */
+  gap: 10px;                /* ⭐ spacing between items */
+  text-align: right;
+}
+
+.footer-list a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.footer-list a:hover {
+  color: white;
+}
+
+
+/* ===== NAV + SOCIALS SCROLL ANIMATION ===== */
+.hide-nav {
+  opacity: 0;
+  transform: translateY(-25px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.show-nav {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+
+#navbar, #socials {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------
+   FINAL MOBILE RESPONSIVE FIX (NO HTML CHANGES)
+--------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* HOME PAGE LAYOUT (Q1 = A) */
+  .intro {
+    top: 10vh;
+    left: 0;
+    padding: 0 25px;
+    text-align: center;
+  }
+
+  .intro-content {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .avatar {
+    width: 180px;
+    height: 180px;
+  }
+
+  .intro-text {
+    max-width: 100%;
+  }
+
+  .name {
+    font-size: 28px;
+  }
+
+  .tagline {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+
+
+  /* NAVBAR RESPONSIVE */
+  .navbar {
+    top: 25px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links a {
+    font-size: 15px;
+  }
+
+
+
+  /* SOCIAL ICONS (Q2 = TOP RIGHT FLOATING) */
+  .socials {
+    top: 25px;
+    right: 20px;
+    gap: 18px;
+  }
+
+  .icon img {
+    width: 22px;
+  }
+
+  .icon-label {
+    top: 32px;
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+
+
+  /* EXPERIENCE SECTION */
+  .experience {
+    padding: 0 20px;
+    margin-top: 150px;
+  }
+
+  .exp-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .exp-logo-box img {
+    width: 130px;
+  }
+
+
+
+  /* ABOUT PAGE */
+  .about-section {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .about-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .about-image {
+    width: 220px;
+    height: 220px;
+  }
+
+
+
+  /* CERTIFICATIONS PAGE */
+  .cert-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .cert-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .cert-img {
+    width: 250px;
+  }
+
+
+
+  /* BACK BUTTON FIX */
+  .back-btn {
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    z-index: 2003;
+  }
+
+
+
+  /* FOOTER (Q3 = A) */
+  .footer-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .footer-email {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .footer-social-row {
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .footer-social-row a {
+    font-size: 15px;
+  }
+
+}
+/* ---------------------------------------------------
+   MOBILE FIXES — back button + cert logos
+--------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* BACK BUTTON SHOULD NOT OVERLAP NAVBAR */
+  .back-btn {
+    top: 70px !important;   /* navbar + socials se neeche aa jayega */
+    left: 20px !important;
+    font-size: 18px;
+  }
+
+  /* NAVBAR ko thoda adjust so no overlap */
+  .navbar {
+    top: 20px !important;
+  }
+
+  /* CERTIFICATION logo center align */
+  .cert-left img.cert-logo-final {
+    margin: 0 auto;           /* center horizontally */
+    display: block;           /* force centering */
+    width: 120px !important;  /* thoda smaller mobile look */
+  }
+
+}
+/* ---------------------------------------------------
+   EXTRA MOBILE FIXES — socials shift + about image center
+--------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* 1️⃣ SOCIAL ICONS TOO HIGH → MOVE DOWN */
+  .socials {
+    top: 90px !important;   /* perfect spacing */
+    right: 20px !important;
+  }
+
+  /* 2️⃣ ABOUT PAGE IMAGE CENTER ALIGN */
+  .about-image-box {
+    margin: 0 auto !important;     /* center container */
+    justify-content: center !important;
+  }
+
+  .about-image {
+    margin-top: 25px;              /* spacing from text */
+    width: 280px !important;
+    height: 280px !important;
+  }
+
 }
