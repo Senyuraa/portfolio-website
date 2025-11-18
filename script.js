@@ -49,3 +49,17 @@ window.addEventListener("scroll", () => {
 
   lastScroll = currentScroll;
 });
+// ===== PARALLAX GRID MOVEMENT =====
+window.addEventListener("scroll", () => {
+  const offset = window.scrollY * 0.05; // adjust intensity
+  document.body.style.setProperty('--grid-shift', `${offset}px`);
+});
+
+const faders = document.querySelectorAll('.fade-sec');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+      el.classList.add('visible');
+    }
+  });
+});

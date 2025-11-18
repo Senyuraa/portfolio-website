@@ -33,13 +33,27 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
+  
+  /* GRID LINES */
   background-image:
-    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(231, 150, 11, 0.196) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px);
+
   background-size: 40px 40px;
+  
+  /* CENTER BRIGHT — EDGES FADE OUT */
+  mask-image: radial-gradient(
+      circle at center,
+      rgba(255,255,255,1) 0%,     /* full brightness center */
+      rgba(255,255,255,0.7) 40%,  /* slightly faded middle */
+      rgba(255,255,255,0.25) 70%, /* more fade near edges */
+      rgba(255,255,255,0.05) 100% /* almost invisible corners */
+  );
+
   z-index: 0;
   pointer-events: none;
 }
+
 
 /* ---------------------------------------------------
    HOME PAGE — INTRO
@@ -879,4 +893,29 @@ body::before {
     height: 280px !important;
   }
 
+}
+
+/* ===== PARALLAX GRID EFFECT ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px),
+    linear-gradient(to bottom, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px);
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+  transform: translateY(var(--grid-shift, 0px));
+  transition: transform 0.15s linear;
+}
+ .fade-sec {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .6s ease-out;
+}
+
+.fade-sec.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
