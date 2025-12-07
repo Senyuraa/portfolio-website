@@ -1,6 +1,33 @@
 const expSection = document.getElementById("experience");
 const expLine = document.getElementById("exp-line");
 
+let currentWidth = 0;            // current smooth width
+let targetWidth = 0;             // where it should go
+
+function animateLine() {
+  currentWidth += (targetWidth - currentWidth) * 0.05;  // smoother (slower & buttery)
+  expLine.style.width = currentWidth.toFixed(2) + "%";
+
+  requestAnimationFrame(animateLine);
+}
+
+animateLine();  // start animation loop
+
+window.addEventListener("scroll", () => {
+  const rect = expSection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.top < windowHeight && rect.bottom > 0) {
+    const progress = Math.min(1, Math.max(0, 1 - rect.top / windowHeight));
+    targetWidth = progress * 100;
+  } else if (rect.top >= windowHeight) {
+    targetWidth = 0;
+  } else if (rect.bottom <= 0) {
+    targetWidth = 100;
+  }
+});
+
+
 // super smooth experience line animation
 let lastWidth = 0;
 
@@ -31,7 +58,7 @@ window.addEventListener("scroll", () => {
   let currentScroll = window.scrollY;
 
   if (currentScroll > lastScroll && currentScroll > 50) {
-    // DOWN → hide
+    
     navbar.classList.add("hide-nav");
     socials.classList.add("hide-nav");
 
@@ -39,7 +66,7 @@ window.addEventListener("scroll", () => {
     socials.classList.remove("show-nav");
   } 
   else {
-    // UP → show
+   
     navbar.classList.add("show-nav");
     socials.classList.add("show-nav");
 
@@ -49,11 +76,7 @@ window.addEventListener("scroll", () => {
 
   lastScroll = currentScroll;
 });
-// ===== PARALLAX GRID MOVEMENT =====
-window.addEventListener("scroll", () => {
-  const offset = window.scrollY * 0.05; // adjust intensity
-  document.body.style.setProperty('--grid-shift', `${offset}px`);
-});
+
 
 const faders = document.querySelectorAll('.fade-sec');
 window.addEventListener('scroll', () => {

@@ -6,6 +6,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
+#contact {
+  scroll-margin-top: 120px;   /* navbar height ke hisaab se */
+}
+
 .footer {
   text-align: center;
   margin-top: 150px;
@@ -88,7 +95,7 @@ body::before {
   transition: .3s ease;
 }
 
-.avatar:hover { transform: scale(1.05); opacity: 1; }
+.avatar:hover { transform: scale(1); opacity: 1; }
 
 .name {
   font-size: 42px;
@@ -99,7 +106,7 @@ body::before {
   transition: .25s ease;
 }
 
-.name:hover { color: #c2c2c2; }
+.name:hover { color: #acf8e8; }
 
 .tagline {
   font-size: 17px;
@@ -136,7 +143,7 @@ body::before {
   object-fit: cover;
   border: 2px solid rgba(255,255,255,.15);
   transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0.95;
+  opacity: 1;
 }
 
 
@@ -229,13 +236,15 @@ body::before {
 
 .exp-line {
   width: 0%;
-  height: 2px;
+  max-width: 1250px;          /* ⭐ LINE LIMIT: YAHAN CONTROL KAR */
+  height: 10px;
   background: linear-gradient(90deg, #70e1c9, #ffffff);
   margin-bottom: 25px;
   border-radius: 3px;
   transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: width;
 }
+
 
 .experience h2 {
   font-size: 34px;
@@ -919,3 +928,174 @@ body::before {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* CONTACT PAGE IMAGE CENTERING + RESPONSIVE */
+.contact-me-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: -40px;              /* space from top */
+}
+
+.contact-me {
+  width: 55%;                    /* adjust SIZE here */
+  max-width: 600px;              /* limit for big screens */
+  min-width: 260px;              /* limit for phones */
+  display: block;
+  border-radius: 12px;           /* optional: smooth edges */
+  opacity: 0.95;                 /* optional */
+  transition: transform 0.3s ease;
+}
+
+.contact-me:hover {
+  transform: scale(1.03);        /* small hover effect */
+  opacity: 1;
+}
+
+/* 🔥 EXPERIENCE SECTION HEADER IMAGE */
+.exp-header-image-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.exp-header-image {
+  width: 45%;            /* adjust size */
+  max-width: 500px;
+  min-width: 260px;
+  display: block;
+  opacity: 0.95;
+  transition: 0.3s ease;
+}
+
+.exp-header-image:hover {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+
+
+/* -------------------------------
+   CONTACT PAGE FINAL DESIGN
+-------------------------------- */
+
+.contact-section {
+  width: 100%;
+  padding-top: 4vh;
+  text-align: center;
+}
+
+/* Header PNG */
+.contact-header-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.contact-header-img {
+  width: 45%;
+  max-width: 520px;
+  min-width: 260px;
+  opacity: 0.95;
+  transition: 0.3s ease;
+}
+
+.contact-header-img:hover {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+/* SOCIAL ROW */
+.contact-social-row {
+  display: flex;
+  justify-content: center;
+  gap: 45px;          /* 🔥 gap reduced */
+  margin-top: -10px;  /* contact header ke thoda paas */
+}
+
+/* Individual Card */
+.contact-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80px;        /* 🔥 bigger buttons */
+  height: 80px;
+  padding: 0;
+
+  background: rgba(255,255,255,0.08);
+  border-radius: 18px;
+
+  transition: 0.3s ease;
+  box-shadow: 0 0 18px rgba(255,255,255,0.04);
+}
+
+.contact-card:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-4px);
+}
+
+.contact-icon {
+  width: 200px;         /* 👈 icon size */
+  height: 60px;        /* 👈 force perfect square */
+  opacity: 1;
+  transition: 0.3s ease;
+}
+
+.contact-card.icon-only {
+  padding: 30px 150px;      /* bigger breathing */
+  border-radius: 20px;     /* premium curve */
+}
+
+.contact-card:hover .contact-icon {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.contact-card span {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* CONTACT ICON LABEL */
+.contact-label {
+  position: absolute;
+  bottom: -40px;             /* icon ke bilkul niche */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background: rgba(255,255,255,0.10);
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  font-size: 13px;
+  color: #eee;
+  opacity: 0;
+  white-space: nowrap;
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover effect */
+.contact-card:hover .contact-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(4px);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;                   /* scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;          /* dark track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #70e1c9;          /* << NEON GREEN */
+  border-radius: 10px;
+}
+
