@@ -16,10 +16,10 @@ This portfolio is designed with a strong emphasis on clean layouts, smooth inter
 - Smooth hover effects and transitions
 - Glassmorphism-inspired sections
 - Dedicated sections for:
-  - Experience
-  - Projects
-  - Certifications
-  - Contact / Social links
+  > - Experience
+  > - Projects
+  > - Certifications
+  > - Contact / Social links
 - Optimized for performance and readability
 
 ---
