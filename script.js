@@ -86,3 +86,35 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+// EXPERIENCE LINE ONLY ON INDEX PAGE
+if (document.getElementById("experience")) {
+
+  const expSection = document.getElementById("experience");
+  const expLine = document.getElementById("exp-line");
+
+  let currentWidth = 0;
+  let targetWidth = 0;
+
+  function animateLine() {
+    currentWidth += (targetWidth - currentWidth) * 0.05;
+    expLine.style.width = currentWidth.toFixed(2) + "%";
+    requestAnimationFrame(animateLine);
+  }
+
+  animateLine();
+
+  window.addEventListener("scroll", () => {
+    const rect = expSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const progress = Math.min(1, Math.max(0, 1 - rect.top / windowHeight));
+      targetWidth = progress * 100;
+    } else if (rect.top >= windowHeight) {
+      targetWidth = 0;
+    } else if (rect.bottom <= 0) {
+      targetWidth = 100;
+    }
+  });
+
+}

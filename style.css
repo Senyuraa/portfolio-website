@@ -1,16 +1,42 @@
-/* ---------------------------------------------------
-   GLOBAL RESET + BASE
---------------------------------------------------- */
+/* --------------------------------------------------- GLOBAL RESET + BASE --------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ===== GLOBAL SITE SCALE ===== */
+body {
+  zoom: 1.3;
+  /* 150% scale */
+}
+/* ================= MOBILE RESET ================= */
+@media (max-width: 768px) {
+  body {
+    zoom: 1;              /* 🔥 VERY IMPORTANT */
+    transform: none;     /* 🔥 */
+    width: 100%;
+  }
+}
+
+/* Firefox fallback */
+@supports not (zoom: 1) {
+  body {
+    transform: scale(1.5);
+    transform-origin: top left;
+    width: 66.6667%;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 #contact {
-  scroll-margin-top: 120px;   /* navbar height ke hisaab se */
+  scroll-margin-top: 120px;
+  /* navbar height ke hisaab se */
 }
 
 .footer {
@@ -19,7 +45,7 @@ html {
   margin-bottom: 50px;
   font-size: 14px;
   color: #a0a0a0;
-  font-family: "SF Pro Display", "Inter", sans-serif;
+  font-family: "League Spartan", system-ui, sans-serif;
   letter-spacing: 0.5px;
   width: 100%;
   display: flex;
@@ -27,7 +53,7 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "League Spartan", system-ui, sans-serif;
   background: #050505;
   color: #f3f3f3;
   overflow-x: hidden;
@@ -37,35 +63,23 @@ body {
 
 /* Grid background */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  
-  /* GRID LINES */
-  background-image:
-    linear-gradient(to right, rgba(231, 150, 11, 0.196) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px);
-
+  background-image: linear-gradient(to right, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px), linear-gradient(to bottom, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px);
   background-size: 40px 40px;
-  
   /* CENTER BRIGHT — EDGES FADE OUT */
-  mask-image: radial-gradient(
-      circle at center,
-      rgba(255,255,255,1) 0%,     /* full brightness center */
-      rgba(255,255,255,0.7) 40%,  /* slightly faded middle */
-      rgba(255,255,255,0.25) 70%, /* more fade near edges */
-      rgba(255,255,255,0.05) 100% /* almost invisible corners */
-  );
-
+  mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%,
+      /* full brightness center */
+      rgba(255, 255, 255, 0.7) 40%,
+      /* slightly faded middle */
+      rgba(255, 255, 255, 0.25) 70%,
+      /* more fade near edges */
+      rgba(255, 255, 255, 0.05) 100%
+      /* almost invisible corners */
+    );
   z-index: 0;
   pointer-events: none;
 }
 
-
-/* ---------------------------------------------------
-   HOME PAGE — INTRO
---------------------------------------------------- */
-
+/* --------------------------------------------------- HOME PAGE — INTRO --------------------------------------------------- */
 .intro {
   position: relative;
   top: 22vh;
@@ -85,97 +99,53 @@ body::before {
   border-radius: 18px;
   overflow: hidden;
 }
+
 .avatar {
   width: 280px;
   height: 280px;
   border-radius: 18px;
   object-fit: cover;
-  border: 2px solid rgba(255,255,255,.15);
-  opacity: 0.95;
-  transition: .3s ease;
+  border: 2px solid rgba(255, 255, 255, .15);
+  opacity: 0.92;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
 }
 
-.avatar:hover { transform: scale(1); opacity: 1; }
+/* PREMIUM HOVER */
+.avatar:hover {
+  transform: scale(1.06);
+  opacity: 1;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 0 2px rgba(112, 225, 201, 0.35);
+}
 
 .name {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 18px;
+  font-size: 62px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  /* ⬅ more space below name */
   color: white;
   text-decoration: none;
+  display: inline-block;
   transition: .25s ease;
 }
 
-.name:hover { color: #acf8e8; }
-
-.tagline {
-  font-size: 17px;
-  color: #a0a0a0;
-  line-height: 1.6;
-}
-
-/* EXACT FIX YOU ASKED FOR */
-.intro {
-  position: relative;
-  top: 22vh;
-  left: 100px;
-  z-index: 2;
-}
-
-.intro-content {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-
-.avatar-wrapper {
-  position: relative;
-  display: inline-block;
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.avatar {
-  width: 280px;
-  height: 280px;
-  border-radius: 18px;
-  object-fit: cover;
-  border: 2px solid rgba(255,255,255,.15);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 1;
-}
-
-
-.avatar-wrapper:hover .avatar {
-  transform: scale(1.05);
-  opacity: 1;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-
-.intro-text {
-  max-width: 500px;
-}
-
-.name {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 18px;
+.name:hover {
+  color: #acf8e8;
 }
 
 .tagline {
-  font-size: 17px;
+  font-size: 18px;
   color: #a0a0a0;
   line-height: 1.6;
+  /* more breathing */
+  max-width: 520px;
+  margin-bottom: 60px;
+  /* ⬅ BIG space below text */
 }
 
-/* ---------------------------------------------------
-   SOCIAL ICONS
---------------------------------------------------- */
+/* --------------------------------------------------- SOCIAL ICONS --------------------------------------------------- */
 .socials {
   position: fixed;
-  top: 40px;
+  top: 55px;
   right: 60px;
   display: flex;
   gap: 25px;
@@ -183,7 +153,8 @@ body::before {
 }
 
 .icon {
-  position: relative;   /* ⭐ THIS fixes label position issue */
+  position: relative;
+  /* ⭐ THIS fixes label position issue */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -204,12 +175,14 @@ body::before {
 /* ===== LABEL FIXED UNDER EACH ICON ===== */
 .icon-label {
   position: absolute;
-  top: 38px;            /* ⭐ label goes BELOW icon (increase for more gap) */
+  top: 38px;
+  /* ⭐ label goes BELOW icon (increase for more gap) */
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  background: rgba(255,255,255,0.10);
-  padding: 5px 10px;    /* ⭐ breathing space */
+  background: rgba(255, 255, 255, 0.10);
+  padding: 5px 10px;
+  /* ⭐ breathing space */
   border-radius: 6px;
   font-size: 12px;
   color: #f0f0f0;
@@ -219,14 +192,11 @@ body::before {
 
 .icon:hover .icon-label {
   opacity: 1;
-  transform: translateX(-50%) translateY(4px);  /* ⭐ smooth pop-down */
+  transform: translateX(-50%) translateY(4px);
+  /* ⭐ smooth pop-down */
 }
 
-
-/* ---------------------------------------------------
-   EXPERIENCE SECTION
---------------------------------------------------- */
-
+/* --------------------------------------------------- EXPERIENCE SECTION --------------------------------------------------- */
 .experience {
   margin-top: 220px;
   padding-left: 100px;
@@ -236,7 +206,8 @@ body::before {
 
 .exp-line {
   width: 0%;
-  max-width: 1250px;          /* ⭐ LINE LIMIT: YAHAN CONTROL KAR */
+  max-width: 1250px;
+  /* ⭐ LINE LIMIT: YAHAN CONTROL KAR */
   height: 10px;
   background: linear-gradient(90deg, #70e1c9, #ffffff);
   margin-bottom: 25px;
@@ -244,7 +215,6 @@ body::before {
   transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: width;
 }
-
 
 .experience h2 {
   font-size: 34px;
@@ -261,10 +231,18 @@ body::before {
 
 .exp-item {
   flex: 2;
-  background: rgba(255,255,255,0.08);
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   padding: 35px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-height: 260px;
+  /* 👈 keeps original look */
+  height: auto;
+  /* 👈 allows growth on zoom */
+  margin-bottom: 5px;
+  scrollbar-width: none;
   transition: transform 0.3s ease;
 }
 
@@ -275,11 +253,13 @@ body::before {
 .exp-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
+  /* 👈 safer on zoom */
+  gap: 20px;
 }
 
 .exp-header h3 {
-  font-size: 20px;
+  font-size: 35px;
   color: #fff;
 }
 
@@ -288,7 +268,7 @@ body::before {
 }
 
 .date {
-  font-size: 15px;
+  font-size: 25px;
   color: #a0a0a0;
 }
 
@@ -296,17 +276,19 @@ body::before {
   color: #c2c2c2;
   line-height: 1.7;
   margin: 15px 0;
-  font-size: 16px;
+  font-size: 25px;
 }
 
 .exp-points {
   list-style: none;
   color: #bdbdbd;
-  margin-bottom: 15px;
+  font-size: 25px;
+  margin-top: 40px;
+  margin-bottom: 70px;
 }
 
 .exp-points li {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   position: relative;
   padding-left: 15px;
 }
@@ -319,8 +301,9 @@ body::before {
 }
 
 .langs {
-  font-size: 15px;
+  font-size: 20px;
   color: #9e9e9e;
+  margin-top: 40px;
 }
 
 .exp-logo-box {
@@ -328,7 +311,7 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 50px;
 }
 
 .exp-logo-box img {
@@ -344,10 +327,7 @@ body::before {
   opacity: 1;
 }
 
-/* ---------------------------------------------------
-   ABOUT PAGE
---------------------------------------------------- */
-
+/* --------------------------------------------------- ABOUT PAGE --------------------------------------------------- */
 .about-section {
   padding-top: 22vh;
   padding-left: 100px;
@@ -358,22 +338,34 @@ body::before {
 
 .about-layout {
   display: flex;
-  align-items: center;    /* ⭐ fixes vertical placement */
+  align-items: center;
+  /* fixes vertical placement */
   justify-content: space-between;
   gap: 60px;
   animation: fadeIn .7s forwards;
   opacity: 0;
 }
 
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.about-text-box { max-width: 650px; }
+.about-text-box {
+  max-width: 650px;
+}
 
-.about-title { font-size: 42px; margin-bottom: 20px; }
+.about-title {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
 
 .about-text {
   margin-bottom: 18px;
@@ -382,18 +374,20 @@ body::before {
 }
 
 .about-image {
-  width: 340px;            /* ⭐ bigger than before */
+  width: 340px;
+  /* bigger than before */
   height: 340px;
   border-radius: 18px;
   object-fit: cover;
-  border: 2px solid rgba(255,255,255,.15);
+  border: 2px solid rgba(255, 255, 255, .15);
 }
 
 .about-image-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -40px;     /* ⭐ brings image slightly left */
+  margin-left: -40px;
+  /* brings image slightly left */
 }
 
 /* ABOUT LINK */
@@ -402,12 +396,12 @@ body::before {
   text-decoration: none;
   font-size: 18px;
 }
-.about-cert-link a:hover { color: white; }
 
-/* ---------------------------------------------------
-   CERTIFICATIONS PAGE
---------------------------------------------------- */
+.about-cert-link a:hover {
+  color: white;
+}
 
+/* --------------------------------------------------- CERTIFICATIONS PAGE --------------------------------------------------- */
 .cert-section {
   padding-top: 22vh;
   padding-left: 100px;
@@ -416,22 +410,34 @@ body::before {
   opacity: 0;
 }
 
-.cert-title { font-size: 42px; margin-bottom: 10px; }
+.cert-title {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
 
-.cert-desc { color:#c7c7c7; margin-bottom: 40px; }
+.cert-desc {
+  color: #c7c7c7;
+  font-size: 18px;
+  margin-bottom: 60px;
+}
 
 .cert-card {
   display: flex;
   justify-content: space-between;
-  gap: 40px;
-  background: rgba(255,255,255,.08);
-  padding: 30px;
-  border-radius: 14px;
-  margin-bottom: 50px;
+  align-items: center;
+  gap: 60px;
+  background: rgba(255, 255, 255, .08);
+  padding: 50px;
+  /* ⬅ bigger card */
+  border-radius: 18px;
+  margin-bottom: 70px;
+  /* ⬅ more breathing */
   transition: .3s ease;
 }
 
-.cert-card:hover { transform: translateY(-4px); }
+.cert-card:hover {
+  transform: translateY(-4px);
+}
 
 .cert-left {
   flex: 2;
@@ -440,19 +446,25 @@ body::before {
   gap: 12px;
 }
 
-.cert-left h2 { font-size: 26px; }
+.cert-left h2 {
+  font-size: 30px;
+  /* ⬅ bigger heading */
+  margin-bottom: 14px;
+}
 
 .cert-left p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #c7c7c7;
+  font-size: 18px;
+  /* ⬅ readable body */
+  line-height: 1.7;
+  color: #cfcfcf;
+  max-width: 700px;
 }
 
 .cert-logo-final {
-  width: 140px;
-  margin-top: 12px;
+  width: 160px;
+  /* ⬅ more presence */
+  margin-top: 20px;
   opacity: .95;
-  object-fit: contain;
 }
 
 .cert-right {
@@ -462,19 +474,22 @@ body::before {
 }
 
 .cert-img {
-  width: 330px;
-  border-radius: 12px;
-  border: 2px solid rgba(255,255,255,.1);
+  width: 380px;
+  /* ⬅ bigger cert */
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, .12);
   cursor: pointer;
-  transition: .3s;
+  transition: .3s ease;
 }
 
-.cert-img:hover { transform: scale(1.03); }
+.cert-img:hover {
+  transform: scale(1.04);
+}
 
 .cert-viewer {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.85);
+  background: rgba(0, 0, 0, .85);
   backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
@@ -485,7 +500,10 @@ body::before {
   z-index: 999;
 }
 
-.cert-viewer.active { opacity:1; pointer-events:auto; }
+.cert-viewer.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 .cert-viewer img {
   max-width: 92%;
@@ -495,62 +513,83 @@ body::before {
 }
 
 @keyframes zoomIn {
-  from { transform: scale(.8); opacity:0; }
-  to { transform: scale(1); opacity:1; }
+  from {
+    transform: scale(.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-/* ---------------------------------------------------
-   BACK BUTTON
---------------------------------------------------- */
-
+/* --------------------------------------------------- BACK BUTTON --------------------------------------------------- */
 .back-btn {
   position: fixed;
-  top: 40px;
+  top: 52px;
   left: 40px;
   color: white;
   font-size: 20px;
   text-decoration: none;
   opacity: .85;
   transition: .2s;
-  z-index: 2003; /* ⭐ above navbar + socials + everything */
+  z-index: 2003;
+  /* ⭐ above navbar + socials + everything */
 }
 
 .back-btn:hover {
   opacity: 1;
 }
-  
 
-/* ---------------------------------------------------
-   MOBILE RESPONSIVE
---------------------------------------------------- */
+/* --------------------------------------------------- MOBILE RESPONSIVE --------------------------------------------------- */
+@media (max-width:768px) {
+  .intro {
+    top: 10vh;
+    left: 0;
+    padding: 0 20px;
+  }
 
-@media (max-width:768px){
+  .intro-content {
+    flex-direction: column;
+    text-align: center;
+  }
 
-  .intro { top:10vh; left:0; padding:0 20px; }
+  .experience {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-  .intro-content { flex-direction:column; text-align:center; }
+  .exp-layout {
+    flex-direction: column;
+  }
 
-  .experience { padding-left:20px; padding-right:20px; }
+  .about-layout {
+    flex-direction: column;
+    text-align: center;
+  }
 
-  .exp-layout { flex-direction:column; }
+  .cert-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-  .about-layout { flex-direction:column; text-align:center; }
+  .cert-img {
+    width: 260px;
+  }
 
-  .cert-card { flex-direction:column; align-items:center; text-align:center; }
-
-  .cert-img { width:260px; }
-
-  .cert-logo-final { width:110px; }
+  .cert-logo-final {
+    width: 110px;
+  }
 }
 
-/* ---------------------------------------------------
-   CLEAN TRANSPARENT NAVBAR
---------------------------------------------------- */
-
+/* --------------------------------------------------- CLEAN TRANSPARENT NAVBAR --------------------------------------------------- */
 .navbar {
   width: 100%;
   position: fixed;
-  top: 44px;      /* ↓ BRING NAVBAR DOWN */
+  top: 44px;
+  /* ↓ BRING NAVBAR DOWN */
   left: 0;
   padding: 0px;
   display: flex;
@@ -559,7 +598,6 @@ body::before {
   background: transparent;
   z-index: 1000;
 }
-
 
 .nav-links {
   display: flex;
@@ -592,24 +630,23 @@ body::before {
   color: #a0a0a0;
   letter-spacing: 0.4px;
   opacity: 0.85;
-  font-family: "Inter", sans-serif;
+  font-family: "League Spartan", system-ui, sans-serif;
 }
-/* ---------------------------------------------------
-   CLEAN MINIMAL FOOTER (GLOBAL)
---------------------------------------------------- */
-/* ===== TRUE PROFESSIONAL FOOTER ===== */
 
+/* --------------------------------------------------- CLEAN MINIMAL FOOTER (GLOBAL) --------------------------------------------------- */
+/* ===== TRUE PROFESSIONAL FOOTER ===== */
 .site-footer {
   width: 100%;
-  margin-top: 120px;
+  margin-top: 100px;
   padding: 25px 0 40px 0;
   color: #a0a0a0;
-  font-size: 14px;
-  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-family: "League Spartan", system-ui, sans-serif;
 }
 
 .footer-line {
-  width: 92%;               /* shorter clean line */
+  width: 92%;
+  /* shorter clean line */
   margin: 0 auto 22px auto;
   height: 1px;
   background: rgba(255, 255, 255, 0.325);
@@ -657,10 +694,13 @@ body::before {
 .footer-social-row a:hover {
   color: white;
 }
+
 .footer-list {
   display: flex;
-  flex-direction: row;   /* ⭐ vertical list */
-  gap: 10px;                /* ⭐ spacing between items */
+  flex-direction: row;
+  /* ⭐ vertical list */
+  gap: 10px;
+  /* ⭐ spacing between items */
   text-align: right;
 }
 
@@ -673,7 +713,6 @@ body::before {
 .footer-list a:hover {
   color: white;
 }
-
 
 /* ===== NAV + SOCIALS SCROLL ANIMATION ===== */
 .hide-nav {
@@ -690,15 +729,13 @@ body::before {
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-
-#navbar, #socials {
+#navbar,
+#socials {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ---------------------------------------------------
-   FINAL MOBILE RESPONSIVE FIX (NO HTML CHANGES)
---------------------------------------------------- */
+/* --------------------------------------------------- FINAL MOBILE RESPONSIVE FIX (NO HTML CHANGES) --------------------------------------------------- */
 @media (max-width: 768px) {
 
   /* HOME PAGE LAYOUT (Q1 = A) */
@@ -732,8 +769,6 @@ body::before {
     line-height: 1.5;
   }
 
-
-
   /* NAVBAR RESPONSIVE */
   .navbar {
     top: 25px;
@@ -746,8 +781,6 @@ body::before {
   .nav-links a {
     font-size: 15px;
   }
-
-
 
   /* SOCIAL ICONS (Q2 = TOP RIGHT FLOATING) */
   .socials {
@@ -766,8 +799,6 @@ body::before {
     padding: 4px 8px;
   }
 
-
-
   /* EXPERIENCE SECTION */
   .experience {
     padding: 0 20px;
@@ -782,8 +813,6 @@ body::before {
   .exp-logo-box img {
     width: 130px;
   }
-
-
 
   /* ABOUT PAGE */
   .about-section {
@@ -802,8 +831,6 @@ body::before {
     height: 220px;
   }
 
-
-
   /* CERTIFICATIONS PAGE */
   .cert-section {
     padding-left: 20px;
@@ -820,8 +847,6 @@ body::before {
     width: 250px;
   }
 
-
-
   /* BACK BUTTON FIX */
   .back-btn {
     top: 20px;
@@ -829,8 +854,6 @@ body::before {
     font-size: 18px;
     z-index: 2003;
   }
-
-
 
   /* FOOTER (Q3 = A) */
   .footer-flex {
@@ -852,16 +875,15 @@ body::before {
   .footer-social-row a {
     font-size: 15px;
   }
-
 }
-/* ---------------------------------------------------
-   MOBILE FIXES — back button + cert logos
---------------------------------------------------- */
+
+/* --------------------------------------------------- MOBILE FIXES — back button + cert logos --------------------------------------------------- */
 @media (max-width: 768px) {
 
   /* BACK BUTTON SHOULD NOT OVERLAP NAVBAR */
   .back-btn {
-    top: 70px !important;   /* navbar + socials se neeche aa jayega */
+    top: 70px !important;
+    /* navbar + socials se neeche aa jayega */
     left: 20px !important;
     font-size: 18px;
   }
@@ -873,35 +895,38 @@ body::before {
 
   /* CERTIFICATION logo center align */
   .cert-left img.cert-logo-final {
-    margin: 0 auto;           /* center horizontally */
-    display: block;           /* force centering */
-    width: 120px !important;  /* thoda smaller mobile look */
+    margin: 0 auto;
+    /* center horizontally */
+    display: block;
+    /* force centering */
+    width: 120px !important;
+    /* thoda smaller mobile look */
   }
-
 }
-/* ---------------------------------------------------
-   EXTRA MOBILE FIXES — socials shift + about image center
---------------------------------------------------- */
+
+/* --------------------------------------------------- EXTRA MOBILE FIXES — socials shift + about image center --------------------------------------------------- */
 @media (max-width: 768px) {
 
   /* 1️⃣ SOCIAL ICONS TOO HIGH → MOVE DOWN */
   .socials {
-    top: 90px !important;   /* perfect spacing */
+    top: 90px !important;
+    /* perfect spacing */
     right: 20px !important;
   }
 
   /* 2️⃣ ABOUT PAGE IMAGE CENTER ALIGN */
   .about-image-box {
-    margin: 0 auto !important;     /* center container */
+    margin: 0 auto !important;
+    /* center container */
     justify-content: center !important;
   }
 
   .about-image {
-    margin-top: 25px;              /* spacing from text */
+    margin-top: 25px;
+    /* spacing from text */
     width: 280px !important;
     height: 280px !important;
   }
-
 }
 
 /* ===== PARALLAX GRID EFFECT ===== */
@@ -909,16 +934,15 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px),
-    linear-gradient(to bottom, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px);
+  background-image: linear-gradient(to right, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px), linear-gradient(to bottom, rgba(255, 246, 233, 0.263) 0.15px, transparent 0.75px);
   background-size: 40px 40px;
   z-index: 0;
   pointer-events: none;
   transform: translateY(var(--grid-shift, 0px));
   transition: transform 0.15s linear;
 }
- .fade-sec {
+
+.fade-sec {
   opacity: 0;
   transform: translateY(20px);
   transition: all .6s ease-out;
@@ -935,21 +959,28 @@ body::before {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: -40px;              /* space from top */
+  margin-top: -40px;
+  /* space from top */
 }
 
 .contact-me {
-  width: 55%;                    /* adjust SIZE here */
-  max-width: 600px;              /* limit for big screens */
-  min-width: 260px;              /* limit for phones */
+  width: 55%;
+  /* adjust SIZE here */
+  max-width: 600px;
+  /* limit for big screens */
+  min-width: 260px;
+  /* limit for phones */
   display: block;
-  border-radius: 12px;           /* optional: smooth edges */
-  opacity: 0.95;                 /* optional */
+  border-radius: 12px;
+  /* optional: smooth edges */
+  opacity: 0.95;
+  /* optional */
   transition: transform 0.3s ease;
 }
 
 .contact-me:hover {
-  transform: scale(1.03);        /* small hover effect */
+  transform: scale(1.03);
+  /* small hover effect */
   opacity: 1;
 }
 
@@ -962,7 +993,8 @@ body::before {
 }
 
 .exp-header-image {
-  width: 45%;            /* adjust size */
+  width: 45%;
+  /* adjust size */
   max-width: 500px;
   min-width: 260px;
   display: block;
@@ -975,12 +1007,7 @@ body::before {
   opacity: 1;
 }
 
-
-
-/* -------------------------------
-   CONTACT PAGE FINAL DESIGN
--------------------------------- */
-
+/* ------------------------------- CONTACT PAGE FINAL DESIGN -------------------------------- */
 .contact-section {
   width: 100%;
   padding-top: 4vh;
@@ -996,7 +1023,9 @@ body::before {
 
 .contact-header-img {
   width: 45%;
-  max-width: 520px;
+  margin-top: -90px;
+  margin-bottom: -50px;
+  max-width: 550px;
   min-width: 260px;
   opacity: 0.95;
   transition: 0.3s ease;
@@ -1011,8 +1040,10 @@ body::before {
 .contact-social-row {
   display: flex;
   justify-content: center;
-  gap: 45px;          /* 🔥 gap reduced */
-  margin-top: -10px;  /* contact header ke thoda paas */
+  gap: 45px;
+  /* 🔥 gap reduced */
+  margin-top: -10px;
+  /* contact header ke thoda paas */
 }
 
 /* Individual Card */
@@ -1020,33 +1051,35 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 80px;        /* 🔥 bigger buttons */
+  width: 80px;
+  /* 🔥 bigger buttons */
   height: 80px;
   padding: 0;
-
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-
   transition: 0.3s ease;
-  box-shadow: 0 0 18px rgba(255,255,255,0.04);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.04);
 }
 
 .contact-card:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   transform: translateY(-4px);
 }
 
 .contact-icon {
-  width: 200px;         /* 👈 icon size */
-  height: 60px;        /* 👈 force perfect square */
+  width: 200px;
+  /* 👈 icon size */
+  height: 60px;
+  /* 👈 force perfect square */
   opacity: 1;
   transition: 0.3s ease;
 }
 
 .contact-card.icon-only {
-  padding: 30px 150px;      /* bigger breathing */
-  border-radius: 20px;     /* premium curve */
+  padding: 30px 150px;
+  /* bigger breathing */
+  border-radius: 20px;
+  /* premium curve */
 }
 
 .contact-card:hover .contact-icon {
@@ -1063,19 +1096,17 @@ body::before {
 /* CONTACT ICON LABEL */
 .contact-label {
   position: absolute;
-  bottom: -40px;             /* icon ke bilkul niche */
+  bottom: -40px;
+  /* icon ke bilkul niche */
   left: 50%;
   transform: translateX(-50%);
-  
-  background: rgba(255,255,255,0.10);
+  background: rgba(255, 255, 255, 0.10);
   padding: 6px 12px;
   border-radius: 8px;
-
   font-size: 13px;
   color: #eee;
   opacity: 0;
   white-space: nowrap;
-
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -1087,15 +1118,383 @@ body::before {
 
 /* ===== CUSTOM SCROLLBAR ===== */
 ::-webkit-scrollbar {
-  width: 6px;                   /* scrollbar width */
+  width: 6px;
+  /* scrollbar width */
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;          /* dark track */
+  background: #0a0a0a;
+  /* dark track */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #70e1c9;          /* << NEON GREEN */
+  background: #70e1c9;
+  /* << NEON GREEN */
   border-radius: 10px;
 }
+
+/* ------------------------------- PROJECTS SECTION -------------------------------- */
+.projects-section {
+  width: 100%;
+  padding-top: 1vh;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.projects-header-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.projects-header-img {
+  width: 45%;
+  max-width: 500px;
+  min-width: 260px;
+  opacity: 0.95;
+  transition: 0.3s ease;
+}
+
+.projects-header-img:hover {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: .25s ease;
+  margin-bottom: 45px;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-left h3 {
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.project-left p {
+  font-size: 24px;
+  color: #c7c7c7;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.project-tech {
+  font-size: 24px;
+  font-weight: 700;
+  /* bold */
+  background: linear-gradient(90deg, #70e1c9 0%, #cffff6 45%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.project-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-preview {
+  width: 620px;
+  /* bigger size */
+  border-radius: 14px;
+  border: none;
+  /* REMOVE THAT UGLY OUTLINE */
+  transition: 0.3s ease;
+  opacity: 0.95;
+}
+
+.project-preview:hover {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+/* VIEW ALL BUTTON */
+.view-all-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.view-all-btn {
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.25s ease;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.04);
+}
+
+.view-all-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.projects-header-box img {
+  cursor: pointer;
+}
+
+/* ============================================ GLASS EFFECT FOR EXPERIENCE + PROJECT CARDS ============================================ */
+.project-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  padding: 35px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: 0.25s ease;
+  margin-bottom: 45px;
+}
+
+/* ============================================ BLUE GLASS EFFECT FOR LET'S CONNECT SECTION ============================================ */
+.connect-wrapper {
+  margin-top: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 10px;
+  padding: 60px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
+}
+
+/* 🔥 APPLY GLASS PROJECT STYLE ONLY ON PROJECTS.HTML */
+.projects-page .cert-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  padding: 35px !important;
+  transition: .25s ease !important;
+}
+
+/* =============================== FIX GLASS BOX GRID BUG (UNZOOM) ================================ */
+/* Experience cards */
+.exp-item,
+/* Project cards */
+.project-card,
+/* Certifications cards */
+.cert-card,
+/* Contact glass wrapper */
+.connect-wrapper {
+  zoom: 0.6666667;
+  /* 1 / 1.5 = normal size */
+  /* visual stability */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================ ABOUT PAGE SCROLL FIX ============================ */
+/* About page body */
+body.about-page {
+  min-height: auto;
+  overflow-y: auto;
+}
+
+.site-footer {
+  margin-top: 120px;
+}
+
+.about-page .site-footer {
+  margin-top: 60px;
+  /* ya 40px */
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .intro {
+    top: 10vh;
+    left: 0;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .intro-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  .avatar {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience {
+    padding: 0 20px;
+    margin-top: 70px;
+  }
+  .exp-header h3 {
+    font-size: 1.8rem;
+  }
+    .date {
+    font-size: 1.5rem;
+  }
+    .desc,
+  .exp-points,
+  .langs {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 0 20px;
+  }
+
+  .project-card {
+    padding: 22px;
+  }
+
+  .project-left h3 {
+    font-size: 1.5rem;
+  }
+
+  .project-left p {
+    font-size: 1.5rem;
+  }
+
+  .project-preview {
+    width: 100%;
+    margin-top: 50px;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cert-section {
+    padding: 0 20px;
+  }
+
+  .cert-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 22px;
+    gap: 20px;
+  }
+
+  .cert-img {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+/* ===================== LET'S CONNECT / CONTACT — MOBILE FIX ===================== */
+@media (max-width: 868px) {
+
+  /* SECTION SPACING */
+  .connect-wrapper {
+    margin: 20px;
+    margin-top: 40px;
+    padding: 28px 22px;
+    border-radius: 18px;
+  }
+
+  /* LET'S CONNECT HEADING */
+  .connect-wrapper h2,
+  .connect-wrapper h1 {
+    font-size: 1.6rem;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  /* SOCIAL ROW */
+  .contact-social-row {
+    flex-direction: column;     /* 🔥 stack vertically */
+    gap: 18px;
+    margin-top: 10px;
+  }
+
+  /* EACH CARD */
+  .contact-card {
+    width: 100%;
+    height: auto;
+    padding: 18px 20px;
+    justify-content: flex-start;
+    gap: 14px;
+    border-radius: 16px;
+  }
+
+  /* ICON */
+  .contact-icon {
+    width: 200px;
+    height: 75px;
+  }
+
+  /* TEXT INSIDE CARD */
+  .contact-card span {
+    font-size: 1rem;
+  }
+
+  /* REMOVE HOVER LABEL ON MOBILE */
+  .contact-label {
+    display: none;
+  }
+
+}
+
+/* ===== DISABLE FADE-IN FOR LET'S CONNECT ===== */
+.connect-wrapper {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+/* ===== NAVBAR GLASS BACKGROUND (ALWAYS ON) ===== */
+.navbar {
+  position: fixed;
+  top: 44px;
+
+  left: 0px;
+  right: 0px;   /* 🔥 THIS IS THE KEY */
+
+  height: 50px;  /* 👈 yahan height badha / ghata */
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(70px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+  border-radius: 0;   /* sharp edges like you want */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
 
