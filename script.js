@@ -48,7 +48,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// ===== SCROLL HIDE/SHOW NAV + SOCIALS =====
 let lastScroll = 0;
 
 const navbar = document.getElementById("navbar");
@@ -86,7 +85,6 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-// EXPERIENCE LINE ONLY ON INDEX PAGE
 if (document.getElementById("experience")) {
 
   const expSection = document.getElementById("experience");
