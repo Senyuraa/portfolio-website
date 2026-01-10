@@ -9,7 +9,7 @@ body {
   body {
     zoom: 1;              /* 🔥 VERY IMPORTANT */
     transform: none;     /* 🔥 */
-    width: 100%;
+    width: 100%; 
   }
 }
 
