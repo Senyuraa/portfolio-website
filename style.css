@@ -7,7 +7,7 @@ body {
 } 
 @media (max-width: 768px) {
   body {
-    zoom: 1;              /* 🔥 VERY IMPORTANT */ 
+    zoom: 1;              /* 🔥 VERY IMPORTANT */  
     transform: none;     /* 🔥 */
     width: 100%; 
   }
