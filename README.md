@@ -1,6 +1,6 @@
 # 🌐 Personal Portfolio Website
 <p align="center">
-  <img src="5.png" width="800">
+  <img src="5.png" width="800"> 
 </p>
 
 ---
